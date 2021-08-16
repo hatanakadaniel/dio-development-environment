@@ -26,6 +26,7 @@ public class StatementRepository {
                              new Statement(new BigDecimal("3.00"), LocalDateTime.parse("2021-08-16T00:00:00-03:00", dateTimeFormatter), userB));
     }
 
+    // Uso da api de Stream para filtrar linhas de extrato de um dado usuário
     public List<Statement> findAllByUser(final User user) {
         return statements.stream()
                 .filter(statement -> statement.getUser().getCod().equals(user.getCod()))

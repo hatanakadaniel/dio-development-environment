@@ -2,19 +2,14 @@ package com.dio.service;
 
 import com.dio.entity.Statement;
 import com.dio.entity.User;
-import com.dio.repository.StatementRepository;
 
 import java.util.List;
 
-public class StatementService {
+public interface StatementService {
 
-    private final StatementRepository statementRepository;
+    List<Statement> findAllByUser(final User user);
 
-    public StatementService(final User userA, final User userB) {
-        this.statementRepository = new StatementRepository(userA, userB);
-    }
-
-    public List<Statement> findAllByUser(final User user) {
-        return statementRepository.findAllByUser(user);
+    default User findUser(final Statement statement) {
+        return statement.getUser();
     }
 }
